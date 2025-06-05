@@ -25,10 +25,8 @@ const ImageUploader: React.FC = () => {
       setFile(processed.file);
       setPreview(processed.preview);
       setDimensions(processed.dimensions);
-      // Analyze colors for the whole image
       const colorPalette = await analyzeColors(processed.preview);
       setColors(colorPalette);
-      // Simulate upload process
       setTimeout(() => {
         setUploadStatus('success');
       }, 1500);
@@ -71,10 +69,10 @@ const ImageUploader: React.FC = () => {
   }, []);
 
   return (
-    <div className="bg-white rounded-xl shadow-md p-6 sm:p-8 transition-all duration-300">
+    <div className="bg-white rounded-xl shadow-md p-6 sm:p-8 transition-all duration-300" role="main">
       {error && (
-        <div className="mb-4 p-4 bg-red-50 rounded-lg flex items-start gap-3">
-          <AlertCircle className="h-5 w-5 text-red-500 flex-shrink-0 mt-0.5" />
+        <div className="mb-4 p-4 bg-red-50 rounded-lg flex items-start gap-3" role="alert">
+          <AlertCircle className="h-5 w-5 text-red-500 flex-shrink-0 mt-0.5" aria-hidden="true" />
           <p className="text-sm text-red-700">{error}</p>
         </div>
       )}
@@ -89,10 +87,13 @@ const ImageUploader: React.FC = () => {
           onDragOver={handleDragOver}
           onDragLeave={handleDragLeave}
           onDrop={handleDrop}
+          role="button"
+          tabIndex={0}
+          aria-label="Drop zone for uploading images"
         >
           <div className="flex flex-col items-center justify-center py-12 px-4 text-center">
             <div className="h-16 w-16 rounded-full bg-blue-50 flex items-center justify-center mb-4">
-              <Upload className="h-8 w-8 text-blue-500" />
+              <Upload className="h-8 w-8 text-blue-500" aria-hidden="true" />
             </div>
             <h3 className="text-lg font-medium text-gray-900 mb-2">Drag and drop your image</h3>
             <p className="text-sm text-gray-500 mb-4">or click to browse your files</p>
@@ -106,6 +107,7 @@ const ImageUploader: React.FC = () => {
                   const file = e.target.files?.[0];
                   if (file) handleFileChange(file);
                 }}
+                aria-label="Choose an image file to upload"
               />
             </label>
           </div>
@@ -117,15 +119,15 @@ const ImageUploader: React.FC = () => {
             <button 
               onClick={handleReset}
               className="p-2 text-gray-500 hover:text-gray-700 transition-colors"
-              aria-label="Remove image"
+              aria-label="Remove image and start over"
             >
-              <X className="h-5 w-5" />
+              <X className="h-5 w-5" aria-hidden="true" />
             </button>
           </div>
           
           <div className="grid md:grid-cols-2 gap-6">
             <div className="space-y-6">
-              <ImagePreview preview={preview} fileName={file.name} />
+              <ImagePreview preview={preview} fileName={file.name} colors={colors} />
               <FileInfo file={file} status={uploadStatus} dimensions={dimensions} />
             </div>
             <ColorPalette colors={colors} />
