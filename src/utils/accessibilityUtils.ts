@@ -10,6 +10,10 @@ export function generateAltText(colors: { name: string; percentage: number }[]):
 }
 
 export function generateFashionDescription(colors: { name: string; percentage: number }[]): string {
+  if (!colors || colors.length === 0) {
+    return "No colors detected in this piece";
+  }
+
   const mainColor = [...colors].sort((a, b) => b.percentage - a.percentage)[0];
   
   const descriptions = {
