@@ -71,8 +71,8 @@ const ImageUploader: React.FC = () => {
   return (
     <div className="bg-white rounded-xl shadow-md p-6 sm:p-8 transition-all duration-300" role="main">
       {error && (
-        <div className="mb-4 p-4 bg-red-50 rounded-lg flex items-start gap-3" role="alert">
-          <AlertCircle className="h-5 w-5 text-red-500 flex-shrink-0 mt-0.5" aria-hidden="true" />
+        <div className="mb-4 p-4 bg-red-50 rounded-lg flex items-start gap-3\" role="alert">
+          <AlertCircle className="h-5 w-5 text-red-500 flex-shrink-0 mt-0.5\" aria-hidden="true" />
           <p className="text-sm text-red-700">{error}</p>
         </div>
       )}
