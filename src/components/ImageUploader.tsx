@@ -1,8 +1,9 @@
 import React, { useState, useCallback } from 'react';
 import { Upload, X, AlertCircle } from 'lucide-react';
 import { formatFileSize } from '../utils/fileUtils';
-import { processImage, ProcessedImage } from '../utils/imageUtils';
-import { analyzeColors, ColorInfo } from '../utils/colorUtils';
+import { processImage, analyzeImageColors } from '../utils/imageUtils';
+import type { ProcessedImage } from '../utils/imageUtils';
+import { ColorInfo } from '../utils/colorUtils';
 import ImagePreview from './ImagePreview';
 import FileInfo from './FileInfo';
 import ColorPalette from './ColorPalette';
@@ -25,7 +26,7 @@ const ImageUploader: React.FC = () => {
       setFile(processed.file);
       setPreview(processed.preview);
       setDimensions(processed.dimensions);
-      const colorPalette = await analyzeColors(processed.preview);
+      const colorPalette = await analyzeImageColors(processed.preview);
       setColors(colorPalette);
       setTimeout(() => {
         setUploadStatus('success');
@@ -71,8 +72,8 @@ const ImageUploader: React.FC = () => {
   return (
     <div className="bg-white rounded-xl shadow-md p-6 sm:p-8 transition-all duration-300" role="main">
       {error && (
-        <div className="mb-4 p-4 bg-red-50 rounded-lg flex items-start gap-3\" role="alert">
-          <AlertCircle className="h-5 w-5 text-red-500 flex-shrink-0 mt-0.5\" aria-hidden="true" />
+        <div className="mb-4 p-4 bg-red-50 rounded-lg flex items-start gap-3" role="alert">
+          <AlertCircle className="h-5 w-5 text-red-500 flex-shrink-0 mt-0.5" aria-hidden="true" />
           <p className="text-sm text-red-700">{error}</p>
         </div>
       )}
