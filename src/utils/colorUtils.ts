@@ -1,149 +1,70 @@
 import ColorThief from 'colorthief';
 import nearestColor from 'nearest-color';
 
-// Color name mapping
+// Refined color name mapping with fashion-focused colors
 const colorNames = {
+  // Core colors
   black: '#000000',
-  navy: '#000080',
-  darkblue: '#00008B',
-  mediumblue: '#0000CD',
-  blue: '#0000FF',
-  darkgreen: '#006400',
-  green: '#008000',
-  teal: '#008080',
-  darkcyan: '#008B8B',
-  deepskyblue: '#00BFFF',
-  darkturquoise: '#00CED1',
-  mediumspringgreen: '#00FA9A',
-  lime: '#00FF00',
-  springgreen: '#00FF7F',
-  aqua: '#00FFFF',
-  cyan: '#00FFFF',
-  midnightblue: '#191970',
-  dodgerblue: '#1E90FF',
-  lightseagreen: '#20B2AA',
-  forestgreen: '#228B22',
-  seagreen: '#2E8B57',
-  darkslategray: '#2F4F4F',
-  limegreen: '#32CD32',
-  mediumseagreen: '#3CB371',
-  turquoise: '#40E0D0',
-  royalblue: '#4169E1',
-  steelblue: '#4682B4',
-  darkslateblue: '#483D8B',
-  mediumturquoise: '#48D1CC',
-  indigo: '#4B0082',
-  darkolivegreen: '#556B2F',
-  cadetblue: '#5F9EA0',
-  cornflowerblue: '#6495ED',
-  rebeccapurple: '#663399',
-  mediumaquamarine: '#66CDAA',
-  dimgray: '#696969',
-  slateblue: '#6A5ACD',
-  olivedrab: '#6B8E23',
-  slategray: '#708090',
-  lightslategray: '#778899',
-  mediumslateblue: '#7B68EE',
-  lawngreen: '#7CFC00',
-  chartreuse: '#7FFF00',
-  aquamarine: '#7FFFD4',
-  maroon: '#800000',
-  purple: '#800080',
-  olive: '#808000',
-  gray: '#808080',
-  skyblue: '#87CEEB',
-  lightskyblue: '#87CEFA',
-  blueviolet: '#8A2BE2',
-  darkred: '#8B0000',
-  darkmagenta: '#8B008B',
-  saddlebrown: '#8B4513',
-  darkseagreen: '#8FBC8F',
-  lightgreen: '#90EE90',
-  mediumpurple: '#9370DB',
-  darkviolet: '#9400D3',
-  palegreen: '#98FB98',
-  darkorchid: '#9932CC',
-  yellowgreen: '#9ACD32',
-  sienna: '#A0522D',
-  brown: '#A52A2A',
-  darkgray: '#A9A9A9',
-  lightblue: '#ADD8E6',
-  greenyellow: '#ADFF2F',
-  paleturquoise: '#AFEEEE',
-  lightsteelblue: '#B0C4DE',
-  powderblue: '#B0E0E6',
-  firebrick: '#B22222',
-  darkgoldenrod: '#B8860B',
-  mediumorchid: '#BA55D3',
-  rosybrown: '#BC8F8F',
-  darkkhaki: '#BDB76B',
-  silver: '#C0C0C0',
-  mediumvioletred: '#C71585',
-  indianred: '#CD5C5C',
-  peru: '#CD853F',
-  chocolate: '#D2691E',
-  tan: '#D2B48C',
-  lightgray: '#D3D3D3',
-  thistle: '#D8BFD8',
-  orchid: '#DA70D6',
-  goldenrod: '#DAA520',
-  palevioletred: '#DB7093',
-  crimson: '#DC143C',
-  gainsboro: '#DCDCDC',
-  plum: '#DDA0DD',
-  burlywood: '#DEB887',
-  lightcyan: '#E0FFFF',
-  lavender: '#E6E6FA',
-  darksalmon: '#E9967A',
-  violet: '#EE82EE',
-  palegoldenrod: '#EEB8AA',
-  lightcoral: '#F08080',
-  khaki: '#F0E68C',
-  aliceblue: '#F0F8FF',
-  honeydew: '#F0FFF0',
-  azure: '#F0FFFF',
-  sandybrown: '#F4A460',
-  wheat: '#F5DEB3',
-  beige: '#F5F5DC',
-  whitesmoke: '#F5F5F5',
-  mintcream: '#F5FFFA',
-  ghostwhite: '#F8F8FF',
-  salmon: '#FA8072',
-  antiquewhite: '#FAEBD7',
-  linen: '#FAF0E6',
-  lightgoldenrodyellow: '#FAFAD2',
-  oldlace: '#FDF5E6',
-  red: '#FF0000',
-  fuchsia: '#FF00FF',
-  magenta: '#FF00FF',
-  deeppink: '#FF1493',
-  orangered: '#FF4500',
-  tomato: '#FF6347',
-  hotpink: '#FF69B4',
-  coral: '#FF7F50',
-  darkorange: '#FF8C00',
-  lightsalmon: '#FFA07A',
-  orange: '#FFA500',
-  lightpink: '#FFB6C1',
-  pink: '#FFC0CB',
-  gold: '#FFD700',
-  peachpuff: '#FFDAB9',
-  navajowhite: '#FFDEAD',
-  moccasin: '#FFE4B5',
-  bisque: '#FFE4C4',
-  mistyrose: '#FFE4E1',
-  blanchedalmond: '#FFEBCD',
-  papayawhip: '#FFEFD5',
-  lavenderblush: '#FFF0F5',
-  seashell: '#FFF5EE',
-  cornsilk: '#FFF8DC',
-  lemonchiffon: '#FFFACD',
-  floralwhite: '#FFFAF0',
-  snow: '#FFFAFA',
-  yellow: '#FFFF00',
-  lightyellow: '#FFFFE0',
+  white: '#FFFFFF',
+  
+  // Neutrals
   ivory: '#FFFFF0',
-  white: '#FFFFFF'
+  cream: '#FFFDD0',
+  beige: '#F5F5DC',
+  khaki: '#C3B091',
+  tan: '#D2B48C',
+  brown: '#964B00',
+  
+  // Grays
+  silver: '#C0C0C0',
+  gray: '#808080',
+  charcoal: '#36454F',
+  
+  // Blues
+  navy: '#000080',
+  royalblue: '#4169E1',
+  blue: '#0000FF',
+  lightblue: '#ADD8E6',
+  skyblue: '#87CEEB',
+  powderblue: '#B0E0E6',
+  
+  // Reds
+  burgundy: '#800020',
+  maroon: '#800000',
+  red: '#FF0000',
+  crimson: '#DC143C',
+  coral: '#FF7F50',
+  
+  // Greens
+  forestgreen: '#228B22',
+  green: '#008000',
+  olive: '#808000',
+  sage: '#BCB88A',
+  mint: '#98FF98',
+  
+  // Purples
+  purple: '#800080',
+  plum: '#8E4585',
+  violet: '#8F00FF',
+  lavender: '#E6E6FA',
+  
+  // Pinks
+  magenta: '#FF00FF',
+  fuchsia: '#FF00FF',
+  pink: '#FFC0CB',
+  rose: '#FF007F',
+  
+  // Yellows
+  gold: '#FFD700',
+  yellow: '#FFFF00',
+  
+  // Oranges
+  orange: '#FFA500',
+  peach: '#FFE5B4',
+  
+  // Fashion metallics
+  bronze: '#CD7F32',
+  copper: '#B87333',
 };
 
 const getColorName = nearestColor.from(colorNames);
@@ -163,41 +84,81 @@ export const analyzeColors = async (imageUrl: string): Promise<ColorInfo[]> => {
     
     img.onload = () => {
       try {
-        // Get color palette (8 colors)
-        const palette = colorThief.getPalette(img, 8);
+        // Get a larger palette for more accurate color detection
+        const palette = colorThief.getPalette(img, 12);
         if (!palette || palette.length === 0) {
           return reject(new Error('No colors found in image.'));
         }
 
-        // Draw image to canvas to access pixel data
         const canvas = document.createElement('canvas');
         canvas.width = img.width;
         canvas.height = img.height;
         const ctx = canvas.getContext('2d');
         if (!ctx) return reject(new Error('Failed to get canvas context'));
+        
+        // Use high-quality image rendering
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = 'high';
         ctx.drawImage(img, 0, 0, img.width, img.height);
+        
         const imageData = ctx.getImageData(0, 0, img.width, img.height).data;
 
-        // Helper to get distance between two colors
-        function colorDistance(c1: number[], c2: number[]) {
+        // Enhanced color distance calculation using LAB color space
+        function rgbToLab(r: number, g: number, b: number) {
+          // Convert RGB to XYZ
+          let x = r * 0.4124 + g * 0.3576 + b * 0.1805;
+          let y = r * 0.2126 + g * 0.7152 + b * 0.0722;
+          let z = r * 0.0193 + g * 0.1192 + b * 0.9505;
+
+          // Normalize for D65 white point
+          x /= 95.047;
+          y /= 100;
+          z /= 108.883;
+
+          x = x > 0.008856 ? Math.pow(x, 1/3) : (7.787 * x) + 16/116;
+          y = y > 0.008856 ? Math.pow(y, 1/3) : (7.787 * y) + 16/116;
+          z = z > 0.008856 ? Math.pow(z, 1/3) : (7.787 * z) + 16/116;
+
+          return [
+            (116 * y) - 16, // L
+            500 * (x - y),  // a
+            200 * (y - z)   // b
+          ];
+        }
+
+        function colorDistance(rgb1: number[], rgb2: number[]) {
+          const lab1 = rgbToLab(rgb1[0], rgb1[1], rgb1[2]);
+          const lab2 = rgbToLab(rgb2[0], rgb2[1], rgb2[2]);
+          
+          // Calculate Euclidean distance in LAB space
           return Math.sqrt(
-            Math.pow(c1[0] - c2[0], 2) +
-            Math.pow(c1[1] - c2[1], 2) +
-            Math.pow(c1[2] - c2[2], 2)
+            Math.pow(lab1[0] - lab2[0], 2) +
+            Math.pow(lab1[1] - lab2[1], 2) +
+            Math.pow(lab1[2] - lab2[2], 2)
           );
         }
 
         // Count pixels closest to each palette color
         const counts = new Array(palette.length).fill(0);
         let totalPixels = 0;
-        for (let i = 0; i < imageData.length; i += 4) {
+        
+        // Sample pixels for better performance
+        const sampleRate = 4; // Sample every 4th pixel
+        for (let i = 0; i < imageData.length; i += 4 * sampleRate) {
           const r = imageData[i];
           const g = imageData[i + 1];
           const b = imageData[i + 2];
           const a = imageData[i + 3];
-          // Ignore fully transparent pixels
-          if (a === 0) continue;
+          
+          // Skip transparent pixels
+          if (a < 128) continue;
+          
+          // Skip very light (close to white) and very dark (close to black) pixels
+          const brightness = (r + g + b) / 3;
+          if (brightness > 250 || brightness < 5) continue;
+          
           totalPixels++;
+          
           // Find closest palette color
           let minDist = Infinity;
           let minIdx = 0;
@@ -222,8 +183,17 @@ export const analyzeColors = async (imageUrl: string): Promise<ColorInfo[]> => {
             name,
             percentage
           };
+        })
+        // Filter out colors with very low percentages and normalize
+        .filter(color => color.percentage > 1)
+        .sort((a, b) => b.percentage - a.percentage);
+
+        // Normalize percentages to total 100%
+        const totalPercentage = colors.reduce((sum, color) => sum + color.percentage, 0);
+        colors.forEach(color => {
+          color.percentage = Math.round((color.percentage / totalPercentage) * 100);
         });
-        
+
         resolve(colors);
       } catch (error) {
         reject(new Error('Failed to analyze colors'));
